@@ -13,6 +13,12 @@ window.onload = function () {
 function turnRed() {
   tracker = true;
   var border = document.querySelectorAll("div#maze div.boundary");
+  document.addEventListener("mouseleave", function(){
+      if (event.clientX < maze.offsetLeft || event.clientY > maze.offsetRight)
+      {
+        turnRed();
+      }
+     });
   for (var i = 0; i < border.length; i++) {
     border[i].setAttribute("class", "boundary youlose");
   }
@@ -36,4 +42,16 @@ function startGame() {
  }
  var k = document.getElementById("status");
  k.innerHTML = "Move your mouse over the S to begin.";
+}
+
+function turnRed2() {
+  tracker = true;
+  var border = document.querySelectorAll("div#maze div.boundary");
+  if (event.clientX < start.offsetLeft)
+      {
+        turnRed();
+      }
+  for (var i = 0; i < border.length; i++) {
+    border[i].setAttribute("class", "boundary youlose");
+  }
 }
