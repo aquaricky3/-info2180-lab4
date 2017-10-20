@@ -1,5 +1,7 @@
 var tracker = false;
 window.onload = function () {
+  var starting = document.getElementById("start");
+  starting.addEventListener("click", startGame);
   var ending = document.getElementById("end");
   ending.addEventListener("mouseover", endGame);
   var border = document.querySelectorAll("div#maze div.boundary");
@@ -24,4 +26,14 @@ function endGame() {
     else{
       s.innerHTML = "You have lost.";
     }
+}
+
+function startGame() {
+  tracker = false;
+  var start = document.querySelectorAll("div#maze div.boundary");
+  for (var i = 0; i < start.length; i++){
+  start[i].setAttribute("class", "boundary");
+ }
+ var k = document.getElementById("status");
+ k.innerHTML = "Move your mouse over the S to begin.";
 }
